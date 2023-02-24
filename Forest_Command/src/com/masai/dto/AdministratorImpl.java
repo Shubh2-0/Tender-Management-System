@@ -4,6 +4,15 @@ import java.util.Objects;
 
 public class AdministratorImpl implements Administrator {
 
+	static final String GREEN ="\u001B[32m";	
+	public static final String bold = "\u001b[1m";
+	public static final String reset = "\u001B[0m";
+
+    public static final String italic = "\u001b[3m";
+
+    public static final String black = "\u001b[30m";
+    public static final String blue = "\u001b[34m";	
+	
 private String name;
 private String email;
 private String city;
@@ -36,7 +45,7 @@ public void setCity(String city) {
 }
 @Override
 public String toString() {
-	return "AdministratorImpl [name=" + name + ", email=" + email + ", city=" + city + "]";
+	return black+"Name : " + name + "\t Email=" + email + "\t City=" + city;
 }
 @Override
 public int hashCode() {
