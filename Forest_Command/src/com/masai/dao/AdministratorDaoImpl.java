@@ -14,7 +14,7 @@ import com.masai.dto.BidderImpl;
 import com.masai.dto.Tender;
 import com.masai.dto.TenderImpl;
 import com.masai.dto.Vendor;
-import com.masai.dto.VenderImpl;
+import com.masai.dto.VendorImpl;
 import com.masai.exception.AdministratorException;
 import com.masai.exception.BidderException;
 import com.masai.exception.TenderException;
@@ -23,12 +23,21 @@ import com.masai.utility.DBUtils;
 
 
 public class AdministratorDaoImpl implements AdministratorDao {
-
+	
+	static final String GREEN ="\u001B[32m";	
+	public static final String bold = "\u001b[1m";
+	public static final String reset = "\u001B[0m";
+    public static final String italic = "\u001b[3m";
+    public static final String black = "\u001b[30m";
+    public static final String bgBrightWhite = "\u001b[47;1m";
+    public static final String blue = "\u001b[34m";	
+    public static final String underline = "\u001b[4m";
+    
 	static Connection con = null;
 	
 	@Override
-	public Administrator logInByAdmin(String id, String password) throws AdministratorException {
-	Administrator admin = null;
+	public AdministratorImpl logInByAdmin(String id, String password) throws AdministratorException {
+	AdministratorImpl admin = null;
 	
 	
 	try {
@@ -57,13 +66,18 @@ public class AdministratorDaoImpl implements AdministratorDao {
 			
 		}
 		
-		
-
-		DBUtils.closeConnection(con);
 
 	} catch (SQLException e) {
 		
 		e.printStackTrace();
+		
+	}finally {
+		
+		try {
+			DBUtils.closeConnection(con);
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
 		
 	}
 	
@@ -87,14 +101,15 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		
 		con = DBUtils.getConnection();
 		
-		String INSERT_QUERY = "INSERT INTO VENDOR VALUES(?,?,?,?,?)";
+		String INSERT_QUERY = "INSERT INTO VENDOR VALUES(?,?,?,?,?,?)";
 		PreparedStatement statement = con.prepareStatement(INSERT_QUERY);
 		
 		statement.setString(1, v.getId());
 		statement.setString(2, v.getPassword());
 		statement.setString(3, v.getName());
 		statement.setString(4, v.getEmail());
-		statement.setString(5, v.getCity());
+		statement.setString(5, v.getNumber());
+		statement.setString(6, v.getCity());
 		
 		int n = statement.executeUpdate();
 		
@@ -102,13 +117,27 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		
 		else throw new VendorException("SOMETHING WENT WRONG");
 		
-		DBUtils.closeConnection(con);
+		
 		
 	} catch (Exception e) {
 		
 		e.printStackTrace();
 		
+	} finally {
+		
+		try {
+			
+			DBUtils.closeConnection(con);
+			
+		} catch (Exception e2) {
+			
+			e2.printStackTrace();
+			
+		}
+		
+		
 	}
+	
 	
 		
 		
@@ -135,32 +164,42 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		ResultSet set = statement.executeQuery();
 		
 		if(set==null) throw new VendorException("NO RECORD FOUND");
+		System.out.println(underline+bgBrightWhite+bold+black+"\t\tVENDOR ID\t\tPASSOWRD\t\tVENDOR NAmeA\t\t");
 		
 		while(set.next()) {
-		
 		String id = set.getString(1);
 		String pass = set.getString(2);
 		String name = set.getString(3);
 		String email = set.getString(4);
-		String city = set.getString(5);
+		String number = set.getString(5);
+		String city = set.getString(6);
 		
-		Vendor vr = new VenderImpl(id, pass, name, email, city);
+		Vendor vr = new VendorImpl(id, pass, name, email,number, city);
 			
 			System.out.println(vr);
 			
 		}
-		
-		
-		
-		
-		DBUtils.closeConnection(con);
-		
-		
+		System.out.println("\t\t\t\t\t\t\t\t\t\t.");
+		System.out.println(reset+GREEN+bold+"");
 		
 	} catch (Exception e) {
 	
 		e.printStackTrace();
+ 	} finally {
+		
+ 		try {
+			
+ 			DBUtils.closeConnection(con);
+ 			
+		} catch (Exception e2) {
+            
+			e2.printStackTrace();
+
+		}
+ 		
+ 		
 	}
+	
 	
 		
 		
@@ -191,13 +230,26 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		
 		if(num > 0) System.out.println("TENDER ADDED SUCCESSFULLY IN DATABASE");
 		
-		DBUtils.closeConnection(con);
+		
 		
 	} catch (Exception e) {
 		
 		e.printStackTrace();
 		throw new TenderException("SOMETHING WENT WRONG NOT ABLE TO INSERTV TENDER INTO DATABASE");
 		
+	}finally {
+		
+ 		try {
+			
+ 			DBUtils.closeConnection(con);
+ 			
+		} catch (Exception e2) {
+            
+			e2.printStackTrace();
+
+		}
+ 		
+ 		
 	}
 	
 		
@@ -233,7 +285,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 			
 		}
 		
-		DBUtils.closeConnection(con);
+		
 		
 		if(set == null) throw new TenderException("NO RECORD FOUND IN DATABASE");
 		
@@ -242,6 +294,19 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		
 		e.printStackTrace();
 		
+	}finally {
+		
+ 		try {
+			
+ 			DBUtils.closeConnection(con);
+ 			
+		} catch (Exception e2) {
+            
+			e2.printStackTrace();
+
+		}
+ 		
+ 		
 	}
 		
 		
@@ -279,7 +344,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 				
 			}
 			
-			DBUtils.closeConnection(con);
+			
 			
 			if(set==null)  throw new BidderException("NO BIDDER FOUND!");
 			
@@ -287,6 +352,19 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+		}finally {
+			
+	 		try {
+				
+	 			DBUtils.closeConnection(con);
+	 			
+			} catch (Exception e2) {
+	            
+				e2.printStackTrace();
+
+			}
+	 		
+	 		
 		}
 		
 		
@@ -309,7 +387,6 @@ public class AdministratorDaoImpl implements AdministratorDao {
 			
 			if(num > 0) System.out.println("TENDER ASSIGNED SUCCESSFULLY....");
 			
-			DBUtils.closeConnection(con);
 			
 			if(num == 0) System.out.println("SOMETHING WENT WRONG NOT ABLE TO ASSIGN");
 			
@@ -317,6 +394,19 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		
 			e.printStackTrace();
 			
+		} finally {
+			
+	 		try {
+				
+	 			DBUtils.closeConnection(con);
+	 			
+			} catch (Exception e2) {
+	            
+				e2.printStackTrace();
+
+			}
+	 		
+	 		
 		}
 		
 	
