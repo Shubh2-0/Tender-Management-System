@@ -1,6 +1,6 @@
  # Forest Command
  ### <h2 align="center">Best Place For Managinf Tenders</h2>
-<img src="Forest_Command/images/Tables.jpg/project.png" width="900">
+<img src="Forest_Command/Images/Tables.jpg/project.png" width="900">
 
 
 ### <h1 align="center">Website Preview 💻</h1>
