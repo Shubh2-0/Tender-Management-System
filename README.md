@@ -42,27 +42,27 @@
 <table align="center">
   
   <tr>
-      <td align="center" width="96">
+      <td align="center" width="100">
         <img src="Forest_Command/tools/mysql.png" width="45" height="45" alt="HTML" />
       <br>My SQL
     </td>
     
- <td align="center" width="96">
+ <td align="center" width="100">
         <img src="Forest_Command/tools/jdbc.png" width="48" height="48" alt="CSS" />
       <br>JDBC
     </td> 
     
-<td align="center" width="96">
+<td align="center" width="100">
         <img src="Forest_Command/tools/springboot.png" width="48" height="48" alt="Java" />
       <br>Spring Boot
     </td>
     
-<td align="center" width="96">
+<td align="center" width="100">
         <img src="Forest_Command/tools/java.png" width="48" height="48" alt="javascript" />
       <br>Java 
     </td>
     
-<td align="center" width="96">
+<td align="center" width="100">
         <img src="Forest_Command/tools/github.png" width="48" height="48" alt="Vuejs" />
       <br>GitHub
     </td> 
