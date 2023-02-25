@@ -90,6 +90,7 @@ case 2 :
 	
 case 0 :
 	System.out.println(reset+italic+blue+"THANKYOU FOR USING OUR SERVICES VIST AGAIN......😁💖");
+	System.exit(0);
 	return;
 
 	

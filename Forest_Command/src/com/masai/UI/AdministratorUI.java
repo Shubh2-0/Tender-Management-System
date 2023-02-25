@@ -2,13 +2,11 @@ package com.masai.UI;
 
 import java.util.Scanner;
 
-import com.masai.dao.AdministratorDao;
-import com.masai.dao.AdministratorDaoImpl;
 import com.masai.users.AdminstratorUser;
+
 
 public class AdministratorUI {
 
-   static AdminstratorUser admin = new AdminstratorUser();
    
 	static Scanner sc = new Scanner(System.in);
    
@@ -60,37 +58,37 @@ public class AdministratorUI {
     	break;
     
     case 1 :
-    	admin.registerVendor();
+    	AdminstratorUser.registerVendor();
     	operations();
     	break;
     
     case 2 :
-    	admin.viewAllVenders();
+    	AdminstratorUser.viewAllVenders();
     	operations();
     	break;
     
     case 3 :
-    	admin.createTender();
+    	AdminstratorUser.createTender();
     	operations();
     	break;
     
     case 4 :
-    	admin.viewAllTender();
+    	AdminstratorUser.viewAllTender();
     	operations();
     	break;
     
     case 5 :
-    	admin.viewAllBidsOfTender();
+    	AdminstratorUser.viewAllBidsOfTender();
     	operations();
     	break;
     
     case 6 :
-    	admin.assignTenderToVender();
+    	AdminstratorUser.assignTenderToVender();
     	operations();
     	break;
     
     case 7 :
-    	admin.changePassword();
+    	AdminstratorUser.changePassword();
     	
     default :
     	System.out.println("THANKS FOR USING OUR APPLICATION VISIT AGAIN");
