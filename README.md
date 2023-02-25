@@ -20,23 +20,35 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 :star: Star me on GitHub — it helps!
 
 ## Admin Features 📋
-✨ Login with his account\
+
+✨ Login with his account
 
 ✨ Register new Vendor. (assign a new username and password to him)\
 
-✨ View all the vendors\
-✨ Create new tenders\
-✨ View All the Tenders\
-✨ View All the Bids of a tender\
-✨ Assign tender to a vendor\
+✨ View all the vendors
+
+✨ Create new tenders
+
+✨ View All the Tenders
+
+✨ View All the Bids of a tender
+
+✨ Assign tender to a vendor
+
 ✨ Change thier Password
 
 ## Vendor Features 📋
-✨ Login with his account (username and password given by admin)\
-✨ View all the current Tenders\
-✨ Place a Bid against a Tender\
-✨ View status of a Bid(Whether Selected or Not)\
-✨ View his own Bid History\
+
+✨ Login with his account (username and password given by admin)
+
+✨ View all the current Tenders
+
+✨ Place a Bid against a Tender
+
+✨ View status of a Bid(Whether Selected or Not)
+
+✨ View his own Bid History
+
 ✨ Change thier Password
 
 
