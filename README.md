@@ -44,27 +44,27 @@
   <tr>
       <td align="center" width="96">
         <img src="Forest_Command/tools/mysql.png" width="45" height="45" alt="HTML" />
-      <br>Html5
+      <br>My SQL
     </td>
     
  <td align="center" width="96">
         <img src="Forest_Command/tools/jdbc.png" width="48" height="48" alt="CSS" />
-      <br>CSS3
+      <br>JDBC
     </td> 
     
 <td align="center" width="96">
         <img src="Forest_Command/tools/springboot.png" width="48" height="48" alt="Java" />
-      <br>Java
+      <br>Spring Boot
     </td>
     
 <td align="center" width="96">
         <img src="Forest_Command/tools/java.png" width="48" height="48" alt="javascript" />
-      <br>JavaScript
+      <br>Java 
     </td>
     
 <td align="center" width="96">
         <img src="Forest_Command/tools/github.png" width="48" height="48" alt="Vuejs" />
-      <br>Node JS
+      <br>GitHub
     </td> 
   </tr> 
   </table>
