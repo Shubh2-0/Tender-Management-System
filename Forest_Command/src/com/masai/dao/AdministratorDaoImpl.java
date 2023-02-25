@@ -52,12 +52,13 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		ResultSet set = statement.executeQuery();
 		
 		if(set.next()) {
-		
+		    String adminId = set.getString("ad_id");
 			String name = set.getString("ad_name");
 			String email = set.getString("ad_email");
 			String city = set.getString("ad_city");
+			String pass = set.getString("ad_password");
 			
-			admin = new AdministratorImpl(name, email, city);
+			admin = new AdministratorImpl(adminId ,name, email, city , pass);
 			
 		}else {
 			
@@ -415,4 +416,52 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		
 	}
 
+
+	@Override
+	public void changePassword(String password , String id) {
+	
+	try {
+		
+		con = DBUtils.getConnection();
+		String UPDATE_QUERY = "UPDATE ADMINISTRATOR SET ad_password = ? where ad_id = ?";
+		PreparedStatement statement = con.prepareStatement(UPDATE_QUERY);
+		
+		statement.setString(1, password);
+		statement.setString(2, id);
+		
+		int num = statement.executeUpdate();
+		
+		if(num > 0) System.out.println("PASSWORD CHANGED SUSSECCFULLY.....");
+		else {
+			throw new AdministratorException("NO ADMIN FOUND WITH THID ID "+id);
+		}
+		
+		
+	} catch (Exception e) {
+		
+
+		e.printStackTrace();
+		
+		
+		
+	}	finally {
+		
+		try {
+			
+			DBUtils.closeConnection(con);
+			
+		} catch (Exception e2) {
+			
+			e2.printStackTrace();
+		}
+		
+		
+	}
+		
+		
+	}
+
+	
+	
+	
 }
