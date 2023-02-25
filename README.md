@@ -10,7 +10,7 @@
 
 
 ## ER Diagram
-<img alt="Demo" src="Forest_Command/Images/Table.jpg" />
+<img alt="Demo" src="Forest_Command/Images/ER.jpg" />
 :star: Star me on GitHub — it helps!
 
 ## Features 📋
