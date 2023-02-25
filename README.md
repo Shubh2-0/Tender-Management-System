@@ -54,7 +54,7 @@
     
 <td align="center" width="100">
         <img src="Forest_Command/tools/springboot.png" width="48" height="48" alt="Java" />
-      <br>Spring Boot
+      <br>SpringBoot
     </td>
     
 <td align="center" width="100">
