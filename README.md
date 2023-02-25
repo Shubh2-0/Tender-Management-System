@@ -39,11 +39,7 @@
 
 
 ## Tools Used 🛠️
-<img src="Forest_Command/tools/mysql.png" alt="skill" width="50" /> 
-<img src="Forest_Command/tools/jdbc.png" alt="skill" width="50" /> 
-<img src="Forest_Command/tools/github.png" alt="skill" width="50" /> 
-<img src="Forest_Command/tools/java.png" alt="skill" width="50" /> 
-<img src="Forest_Command/tools/sprinboot.png" alt="skill" width="50" />
+<img src="Forest_Command/tools/mysql.png" alt="skill" width="50" /> <img src="Forest_Command/tools/jdbc.png" alt="skill" width="50" /> <img src="Forest_Command/tools/github.png" alt="skill" width="50" /> <img src="Forest_Command/tools/java.png" alt="skill" width="50" /> <img src="Forest_Command/tools/springboot.png" alt="skill" width="50" />
 
 
 <br>
