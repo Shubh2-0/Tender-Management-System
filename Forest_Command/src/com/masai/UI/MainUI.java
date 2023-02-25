@@ -26,7 +26,7 @@ while(i<6) {
 	else if(i<5) System.out.println("INVALID ID OR PASSWORD");
 	
 	else {
-		System.out.println("TRY LIMIT EXCEEDED PLAESE LOGIN AFETR SOMETIME");
+		System.out.println("TRY LIMIT EXCEEDED PLAESE LOGIN AFTER SOMETIME");
 		return;
 	}
 	

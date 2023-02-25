@@ -17,7 +17,8 @@ public class AdminstratorUser{
 public static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 public static Administrator admin = new AdministratorImpl();	
 public static AdministratorDao admindao = new AdministratorDaoImpl();	
-
+public static int tryCount = 0;
+		
 static final String GREEN ="\u001B[32m";	
 public static final String bold = "\u001b[1m";
 public static final String reset = "\u001B[0m";
@@ -51,7 +52,7 @@ public static boolean LogInAdmin(){
 
 	  
   }
-	
+
 public static void registerVendor(){
 	
  
@@ -164,6 +165,36 @@ public static void assignTenderToVender(){
       		
 	}
 	
+	
+}
+
+public static void changePassword() {
+	
+	try {
+		
+		System.out.print("ENTER CURRENT PASSWORD : ");
+		String current = br.readLine();
+		String id = admin.getId();
+		if(current.equals(admin.getPassword())) {
+			System.out.print("ENTER NEW PASSWORD : ");
+			String newPassword = br.readLine(); 
+			admindao.changePassword(newPassword , id);
+			tryCount = 0;
+		}else {
+			if(tryCount < 5) {
+				System.out.println("PASSWORD IS NOT MATCH PLEASE TRY AGAIN....");
+				tryCount = tryCount+1;
+				changePassword();
+			}else {
+				System.out.println("TRY LIMIT EXEDED PLEASE TRY AFTER SOME TIME....");
+			}
+			
+		}
+		
+	} catch (Exception e) {
+	
+		System.out.println(e.getMessage());
+	}
 	
 }
 

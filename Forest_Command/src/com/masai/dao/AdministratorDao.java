@@ -24,7 +24,7 @@ public interface AdministratorDao {
 	
 	public void assignTenderToVender(String venderId , String tenderId) throws BidderException;
 	
-	
+	public void changePassword(String password , String id);
 	
 	
 	
