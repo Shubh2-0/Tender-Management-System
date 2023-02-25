@@ -21,7 +21,9 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 
 ## Admin Features 📋
 ✨ Login with his account\
+
 ✨ Register new Vendor. (assign a new username and password to him)\
+
 ✨ View all the vendors\
 ✨ Create new tenders\
 ✨ View All the Tenders\
