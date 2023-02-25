@@ -83,7 +83,7 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 
 
 
-<a href="https://shubh2-0.github.io/ShubhamBhati.github.io/" target="_blank">**Visit Now** 🚀</a>
+
 
 <h2>📬 Contact</h2>
 
