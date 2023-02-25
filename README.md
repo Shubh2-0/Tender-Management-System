@@ -7,25 +7,10 @@
 </div>
 
 
-### <h1 align="center">Website Preview 💻</h1>
-#### Home Section
-<img src="ReadmeImg/home.png" width="900">
 
 
-#### About Section
-<img src="ReadmeImg/about.png" width="900">
-
-
-#### Projects Section
-<img src="ReadmeImg/project.png" width="900">
-  
-  #### Contact Section
-<img src="ReadmeImg/contact.png" width="900">
-
-#### Skills Section
-<img src="ReadmeImg/skills.png" width="900">
-
-
+## ER Diagram
+<img alt="Demo" src="Forest_Command/Images/Table.jpg" />
 :star: Star me on GitHub — it helps!
 
 ## Features 📋
