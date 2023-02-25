@@ -1,5 +1,5 @@
- # Forest Command
- ### <h2 align="center">Best Place For Managinf Tenders</h2>
+ ### <h1 align="center">FOREST COMMAND</h1>
+ ### <h2 align="center">Best Place For Managing Tenders</h2>
 <img src="Forest_Command/Images/Forest Command.png" width="900">
 
 
