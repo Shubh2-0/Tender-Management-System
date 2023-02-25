@@ -39,7 +39,35 @@
 
 
 ## Tools Used 🛠️
-<img src="Forest_Command/tools/mysql.png" alt="skill" width="50" /> <img src="Forest_Command/tools/jdbc.png" alt="skill" width="50" /> <img src="Forest_Command/tools/github.png" alt="skill" width="50" /> <img src="Forest_Command/tools/java.png" alt="skill" width="50" /> <img src="Forest_Command/tools/springboot.png" alt="skill" width="50" />
+<table align="center">
+  
+  <tr>
+      <td align="center" width="96">
+        <img src="Forest_Command/tools/mysql.png" width="45" height="45" alt="HTML" />
+      <br>Html5
+    </td>
+    
+ <td align="center" width="96">
+        <img src="Forest_Command/tools/jdbc.png" width="48" height="48" alt="CSS" />
+      <br>CSS3
+    </td> 
+    
+<td align="center" width="96">
+        <img src="Forest_Command/tools/springboot.png" width="48" height="48" alt="Java" />
+      <br>Java
+    </td>
+    
+<td align="center" width="96">
+        <img src="Forest_Command/tools/java.png" width="48" height="48" alt="javascript" />
+      <br>JavaScript
+    </td>
+    
+<td align="center" width="96">
+        <img src="Forest_Command/tools/github.png" width="48" height="48" alt="Vuejs" />
+      <br>Node JS
+    </td> 
+  </tr> 
+  </table>
 
 
 <br>
