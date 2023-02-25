@@ -1,9 +1,9 @@
  ### <h1 align="center">FOREST COMMAND</h1>
  ### <h2 align="center">Best Place For Managing Tenders</h2>
  
- ### <h2 align="center">
-<img src="Forest_Command/Images/Forest Command.png" width="900">
-</h2>
+ ### <div align="center">
+<img src="Forest_Command/Images/Forest Command.png" width="500">
+</div>
 
 
 
