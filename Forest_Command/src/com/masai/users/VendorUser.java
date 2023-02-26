@@ -9,6 +9,7 @@ import com.masai.colorConsole.ColorConsole;
 import com.masai.dao.VendorDao;
 import com.masai.dao.VendorDaoImpl;
 import com.masai.dto.Bidder;
+import com.masai.dto.BidderImpl;
 import com.masai.dto.Tender;
 import com.masai.dto.TenderImpl;
 import com.masai.dto.Vendor;
@@ -33,7 +34,7 @@ public static boolean logInVendor(){
 		String pass = br.readLine();
 		vendor = vendordao.logInByVendor(id, pass);
 		
-		if(vendor.getCity()!=null) {
+		if(vendor.getId()!=null) {
 			return true;	
 		}else {
 			return false;
@@ -60,25 +61,8 @@ public static void viewCurrentTender() {
 		ColorConsole.listPreview();
 		list.forEach(e -> System.out.println(e));
 		
-		
-		
-		if(list.size()!=0) {
-		    ColorConsole.reset();
-			System.out.println("\nPRESS 1 FOR SORTING THE LIST FROM LOW TO HIGH PRICE");
-			System.out.println("\nPRESS 2 FOR SORTING THE LIST FROM HIGH TO LOW PRICE");
-			int choice = Integer.parseInt(br.readLine());
-			
-			if(choice==1) {
-				ColorConsole.listPreview();
-				Sorting.highToLowPriceTender(list);
-				list.forEach(e -> System.out.println(e));		
-			}else if (choice==2) {
-				ColorConsole.listPreview();
-				Sorting.highToLowPriceTender(list);
-				list.forEach(e -> System.out.println(e));
-			}
-			
-		}
+         
+		Sorting.chooseTender(list);
 		
 		
 		
@@ -98,12 +82,15 @@ public static void placeABidAgainstTender() {
 	
 
 try {
-	System.out.println("ENTER TENDER ID : ");
+	System.out.print("CREATED A NEW BIDDER ID : ");
 	String id = br.readLine();
-	System.out.println("ENTER BIDDING PRICE HERE : ");
+	System.out.print("ENTER TENDER ID : ");
+	String tr = br.readLine();
+	System.out.print("ENTER BIDDING PRICE HERE : ");
 	int price = Integer.parseInt(br.readLine());
-
-	vendordao.placeBidAgainstTender(id, price);
+	
+    BidderImpl br = new BidderImpl(id, tr, tr, price, "Not Selected");
+	vendordao.placeBidAgainstTender(br);
 	
 } catch (Exception e) {
 	
@@ -140,24 +127,7 @@ public static void viewOwnBidHistory() {
 		
 		ColorConsole.listPreview();
 		list.forEach(e -> System.out.println(e));
-		
-		if(list.size()!=0) {
-		    ColorConsole.reset();
-			System.out.println("\nPRESS 1 FOR SORTING THE LIST FROM LOW TO HIGH PRICE");
-			System.out.println("\nPRESS 2 FOR SORTING THE LIST FROM HIGH TO LOW PRICE");
-			int choice = Integer.parseInt(br.readLine());
-			
-			if(choice==2) {
-				ColorConsole.listPreview();
-				Sorting.highToLowPriceBidder(list);
-				list.forEach(e -> System.out.println(e));		
-			}else if (choice==1) {
-				ColorConsole.listPreview();
-				Sorting.lowToHighPriceBidder(list);
-				list.forEach(e -> System.out.print(e));
-			}
-			
-		}
+		Sorting.chooseBidder(list);
 	
 		
 		

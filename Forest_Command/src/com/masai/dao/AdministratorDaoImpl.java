@@ -342,11 +342,12 @@ public class AdministratorDaoImpl implements AdministratorDao {
 				
 			}
 			
-			
+			if(list.size()!=0) return list;
 			
 			
 			if(list.size()==0)  throw new BidderException("NO BIDDER FOUND!");
 			
+
 			
 		} catch (Exception e) {
 			
@@ -363,10 +364,10 @@ public class AdministratorDaoImpl implements AdministratorDao {
 
 			}
 	 		
-	 		return list;
 		}
 		
-		
+
+ 		return list;
 		
 		
 	}
@@ -379,8 +380,11 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		try {
 			con = DBUtils.getConnection();
 			
-			String UPDATE_QUERY = "UPDATE BIDDER SET BR_STATUS = 'select' where VENDER_ID = ? AND TENDER_ID = ?";
+			String UPDATE_QUERY = "UPDATE BIDDER SET BR_STATUS = 'Selected' where VENDOR_ID = ? AND TENDER_ID = ?";
 			PreparedStatement statement = con.prepareStatement(UPDATE_QUERY);
+			
+			statement.setString(1, venderId);
+			statement.setString(2, tenderId);
 			
 			int num = statement.executeUpdate();
 			

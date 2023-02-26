@@ -12,6 +12,7 @@ public class MainUI {
 public static int adminCount = 0;	
 public static int vendorCount = 0;	
 
+
 public static void admin() {	
 
 
@@ -53,7 +54,7 @@ public static void vendor() {
 		if(VendorUser.logInVendor()) {
 			VendorUI.operations();
 			vendorCount=0;
-			break;
+			return;
 		}
 	  
 		else if(vendorCount<3) {
@@ -83,7 +84,7 @@ public static void main(String[] args) {
 
 Scanner sc = new Scanner(System.in);	
 ColorConsole.reset();	
-System.out.println("\t\t\t\t  🌳 WELCOME TO FOREST COMMAND 🌳 ");
+System.out.println("\t\t\t  🌳 WELCOME TO FOREST COMMAND 🌳 ");
 System.out.println("\t\t\tTHE BEST PLACE FOR MANAGING TENDERS \n\n");
 
 System.out.println("SELECT A VALID OPTION : \n");
@@ -103,7 +104,7 @@ case 1 :
     return;
 	
 case 2 : 
-	System.out.println("ENETER YOUR VENDOR ID AND PASSWORD TO LOGIN \n\n");
+	System.out.println("ENTER YOUR VENDOR ID AND PASSWORD TO LOGIN \n\n");
 	vendor();
 	return;
 	
@@ -115,7 +116,7 @@ case 0 :
 
 	
 default : 
-	System.out.println("INVALID SELECTION! PLEASE ENTER A VALID OPTION ");
+	System.out.println("INVALID SELECTION! PLEASE SELECT A VALID OPTION ");
 	main(args);
 
 
