@@ -28,7 +28,12 @@ public class TenderImpl implements Tender {
 
 	@Override
 	public String toString() {
-		return "Tender [id=" + id + ", name=" + name + ", type=" + type + ", price=" + price + ", city=" + city + "]";
+		if(getType().length()<13) {
+			return "TENDER ID : " + id + "\t NAME : " + name + "\t TYPE : " + type + "\t\t" +"PRICE : " + price + "\t CITY : " + city+"\t";	
+		}else {
+			return "TENDER ID : " + id + "\t NAME : " + name + "\t TYPE : " + type + "\t" +"PRICE : " + price + "\t CITY : " + city+"\t";
+		}
+		
 	}
 
 

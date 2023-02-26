@@ -4,9 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-
-
+import com.masai.colorConsole.ColorConsole;
 import com.masai.dto.Administrator;
 import com.masai.dto.AdministratorImpl;
 import com.masai.dto.Bidder;
@@ -24,13 +25,7 @@ import com.masai.utility.DBUtils;
 
 public class AdministratorDaoImpl implements AdministratorDao {
 	
-	static final String GREEN ="\u001B[32m";	
-	public static final String bold = "\u001b[1m";
-	public static final String reset = "\u001B[0m";
-    public static final String italic = "\u001b[3m";
-    public static final String black = "\u001b[30m";
-    public static final String bgBrightWhite = "\u001b[47;1m";
-    public static final String blue = "\u001b[34m";	
+
     public static final String underline = "\u001b[4m";
     
 	static Connection con = null;
@@ -63,7 +58,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		}else {
 			
 			
-			throw new AdministratorException("NO ADMIN IS FOUND FOR THIS ID AND PASSWORD");
+			throw new AdministratorException("\n\nNO ADMIN IS FOUND FOR THIS ID AND PASSWORD\n\n");
 			
 		}
 		
@@ -165,7 +160,8 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		ResultSet set = statement.executeQuery();
 		
 		if(set==null) throw new VendorException("NO RECORD FOUND");
-		System.out.println(underline+bgBrightWhite+bold+black+"\t\tVENDOR ID\t\tPASSOWRD\t\tVENDOR NAmeA\t\t");
+		ColorConsole.listPreview();
+		System.out.println(underline+"\t\tVENDOR ID\t\tPASSOWRD\t\tVENDOR NAmeA\t\t");
 		
 		while(set.next()) {
 		String id = set.getString(1);
@@ -181,7 +177,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 			
 		}
 		System.out.println("\t\t\t\t\t\t\t\t\t\t.");
-		System.out.println(reset+GREEN+bold+"");
+		
 		
 	} catch (Exception e) {
 	
@@ -202,7 +198,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 	}
 	
 	
-		
+		ColorConsole.reset();
 		
 		
 		
@@ -262,8 +258,8 @@ public class AdministratorDaoImpl implements AdministratorDao {
 	
 	
 	@Override
-	public void viewAllTenders() throws TenderException {
-
+	public List<TenderImpl> viewAllTenders() throws TenderException {
+     ArrayList<TenderImpl> list = new ArrayList<>();
 	try {
 		con = DBUtils.getConnection();
 		String SELECT_QUERY = "SELECT * FROM TENDER";
@@ -280,15 +276,15 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		int price = set.getInt(4);
 		String city = set.getString(5);
 		
-		Tender tr = new TenderImpl(id, name, type, price, city);
+		TenderImpl tr = new TenderImpl(id, name, type, price, city);
 		
-		System.out.println(tr);
+		 list.add(tr);
 			
 		}
 		
 		
 		
-		if(set == null) throw new TenderException("NO RECORD FOUND IN DATABASE");
+		if(list.size() == 0) throw new TenderException("NO RECORD FOUND IN DATABASE");
 		
 		
 	} catch (Exception e) {
@@ -309,7 +305,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
  		
  		
 	}
-		
+		return list;
 		
 	}
 
@@ -317,8 +313,8 @@ public class AdministratorDaoImpl implements AdministratorDao {
 	
 	
 	@Override
-	public void viewAllBidsOfTenders(String tender_id) throws BidderException {
-
+	public List<Bidder> viewAllBidsOfTenders(String tender_id) throws BidderException {
+        List<Bidder> list = new ArrayList<>();
 		try {
 		
 			con = DBUtils.getConnection();
@@ -338,16 +334,18 @@ public class AdministratorDaoImpl implements AdministratorDao {
 			int price = set.getInt(4);
 			String status = set.getString(5);
 			
-			Bidder bider = new BidderImpl();
+			Bidder bider = new BidderImpl(id, tenderID, vendorId, price, status);
 			
-			System.out.println(bider);
+			list.add(bider);
+			
 				
 				
 			}
 			
 			
 			
-			if(set==null)  throw new BidderException("NO BIDDER FOUND!");
+			
+			if(list.size()==0)  throw new BidderException("NO BIDDER FOUND!");
 			
 			
 		} catch (Exception e) {
@@ -359,13 +357,13 @@ public class AdministratorDaoImpl implements AdministratorDao {
 				
 	 			DBUtils.closeConnection(con);
 	 			
-			} catch (Exception e2) {
+			} catch (final Exception e2) {
 	            
 				e2.printStackTrace();
 
 			}
 	 		
-	 		
+	 		return list;
 		}
 		
 		

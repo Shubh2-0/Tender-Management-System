@@ -2,14 +2,19 @@ package com.masai.users;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import com.masai.colorConsole.ColorConsole;
 import com.masai.dao.AdministratorDao;
 import com.masai.dao.AdministratorDaoImpl;
 import com.masai.dto.Administrator;
 import com.masai.dto.AdministratorImpl;
+import com.masai.dto.Bidder;
 import com.masai.dto.Tender;
 import com.masai.dto.TenderImpl;
 import com.masai.dto.Vendor;
 import com.masai.dto.VendorImpl;
+import com.masai.sorting.Sorting;
 
 
 public class AdminstratorUser{
@@ -19,13 +24,7 @@ public static Administrator admin = new AdministratorImpl();
 public static AdministratorDao admindao = new AdministratorDaoImpl();	
 public static int tryCount = 0;
 		
-static final String GREEN ="\u001B[32m";	
-public static final String bold = "\u001b[1m";
-public static final String reset = "\u001B[0m";
-public static final String italic = "\u001b[3m";
-public static final String black = "\u001b[30m";
-public static final String yellow = "\u001b[33m";
-public static final String blue = "\u001b[34m";
+
 
 public static boolean LogInAdmin(){
    
@@ -39,17 +38,16 @@ public static boolean LogInAdmin(){
 		  String password = br.readLine();
 		  
 		admin = ad.logInByAdmin(id, password);
-		System.out.println(yellow+"\n\n \t\t\tWELCOME "+admin.getName().toUpperCase()+" 😁 \n\n");
+		ColorConsole.welcome();
+		System.out.println("\n\n \t\t\tWELCOME "+admin.getName().toUpperCase()+" 😁 \n\n");
 		
 		  return true;
 	} catch (Exception e) {
 
 		System.out.println(e.getMessage());
 		return false;
-	}
-	  
-	  
-
+	}  
+   
 	  
   }
 
@@ -120,15 +118,38 @@ public static void createTender(){
 }
 
 public static void viewAllTender() {
-
+    List<TenderImpl> list = new ArrayList<>();
+   
 	try {
 		
-		admindao.viewAllTenders();
+	list=admindao.viewAllTenders();
+	ColorConsole.listPreview();
+	list.forEach(e -> System.out.println(e));
+	
+	if(list.size()!=0) {
+	    ColorConsole.reset();
+		System.out.println("\nPRESS 1 FOR SORTING THE LIST FROM LOW TO HIGH PRICE");
+		System.out.println("\nPRESS 2 FOR SORTING THE LIST FROM HIGH TO LOW PRICE");
+		int choice = Integer.parseInt(br.readLine());
 		
+		if(choice==1) {
+			ColorConsole.listPreview();
+			Sorting.highToLowPriceTender(list);
+			list.forEach(e -> System.out.println(e));		
+		}else if (choice==2) {
+			ColorConsole.listPreview();
+			Sorting.highToLowPriceTender(list);
+			list.forEach(e -> System.out.println(e));
+		}
+		
+	}
+	
 	} catch (Exception e) {
 		
 		System.out.println(e.getMessage());
 	
+	}finally {
+		ColorConsole.reset();
 	}
 	
 	
@@ -136,14 +157,39 @@ public static void viewAllTender() {
 	
 public static void viewAllBidsOfTender(){
 	
+	List<Bidder> list = new ArrayList<>();
 	
 	try {
 		System.out.println("ENTER TENDER ID HERE : ");
 		String id = br.readLine();
-		admindao.viewAllBidsOfTenders(id);
+		list = admindao.viewAllBidsOfTenders(id);
+		
+		ColorConsole.listPreview();
+		list.forEach(e -> System.out.println(e));
+		ColorConsole.reset();
+		
+		if(list.size()!=0) {
+		    ColorConsole.reset();
+			System.out.println("\nPRESS 1 FOR SORTING THE LIST FROM LOW TO HIGH PRICE");
+			System.out.println("\nPRESS 2 FOR SORTING THE LIST FROM HIGH TO LOW PRICE");
+			int choice = Integer.parseInt(br.readLine());
+			
+			if(choice==2) {
+				ColorConsole.listPreview();
+				Sorting.highToLowPriceBidder(list);
+				list.forEach(e -> System.out.println(e));		
+			}else if (choice==1) {
+				ColorConsole.listPreview();
+				Sorting.highToLowPriceBidder(list);
+				list.forEach(e -> System.out.println(e));
+			}
+			
+		}
+		
+		
 	} catch (Exception e) {
 		
-		System.out.println(e.getMessage());
+		System.out.println("INVALID INPUT");
 	}
 	
 }
