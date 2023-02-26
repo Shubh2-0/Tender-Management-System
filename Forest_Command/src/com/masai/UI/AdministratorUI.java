@@ -44,6 +44,31 @@ public class AdministratorUI {
 	
 	}
 	
+	
+	public static void continurOrExit() {
+	
+		System.out.println("\nPRESS 1 FOR MAIN MENU");
+		System.out.println("PRESS 0 FOR EXIT\n\n");
+		
+	    int choice = sc.nextInt();	
+		
+	    System.out.println("\n\n");
+	    
+	    if(choice == 0) {
+	    	System.out.println("THANKS FOR USING OUR SERVICES....");
+	    	System.exit(0);
+	    }else if(choice == 1) {
+	    	operations();
+	    	
+	    }else {
+	    	System.out.println("INVALID INPUT...PLEASE SELECT VALID OPTION");
+	    	continurOrExit();
+	    }
+	    
+		
+		
+	}
+	
     
 	public static void operations() {
 	
@@ -59,39 +84,44 @@ public class AdministratorUI {
     
     case 1 :
     	AdminstratorUser.registerVendor();
-    	operations();
+    	continurOrExit();
     	break;
     
     case 2 :
     	AdminstratorUser.viewAllVenders();
-    	operations();
+    	continurOrExit();
     	break;
     
     case 3 :
     	AdminstratorUser.createTender();
-    	operations();
+    	continurOrExit();
     	break;
     
     case 4 :
     	AdminstratorUser.viewAllTender();
-    	operations();
+    	continurOrExit();
     	break;
     
     case 5 :
     	AdminstratorUser.viewAllBidsOfTender();
-    	operations();
+    	continurOrExit();
     	break;
     
     case 6 :
     	AdminstratorUser.assignTenderToVender();
-    	operations();
+    	continurOrExit();
     	break;
     
     case 7 :
     	AdminstratorUser.changePassword();
     	
-    default :
+    case 100:
     	System.out.println("THANKS FOR USING OUR APPLICATION VISIT AGAIN");
+    	System.exit(0);
+    	
+    default :
+        System.out.println("INVALID SELECTION.... PLEASE PROVIDE VALID INPUT");
+        continurOrExit();
     
     
     

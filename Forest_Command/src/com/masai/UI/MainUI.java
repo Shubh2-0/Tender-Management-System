@@ -3,34 +3,41 @@ package com.masai.UI;
 import java.io.IOException;
 import java.util.Scanner;
 
+import com.masai.colorConsole.ColorConsole;
 import com.masai.users.AdminstratorUser;
 import com.masai.users.VendorUser;
 
 public class MainUI {
-	
-	static final String GREEN ="\u001B[32m";	
-	public static final String bold = "\u001b[1m";
-	public static final String reset = "\u001B[0m";
-    public static final String italic = "\u001b[3m";
 
-    public static final String black = "\u001b[30m";
-    public static final String blue = "\u001b[34m";
+public static int adminCount = 0;	
+public static int vendorCount = 0;	
 
 public static void admin() {	
 
-int i = 0;
-while(i<6) {
 
-	if(AdminstratorUser.LogInAdmin()) AdministratorUI.operations();
+
+	
+while(adminCount<5) {
+	
+	if(AdminstratorUser.LogInAdmin()) {
+		AdministratorUI.operations();
+		adminCount=0;
+		break;
+		
+	}
   
-	else if(i<5) System.out.println("INVALID ID OR PASSWORD");
+	else if(adminCount<3) {
+		System.out.println("INVALID ID OR PASSWORD");
+		AdminstratorUser.LogInAdmin();
+		adminCount+=1;
+		
+	}
 	
 	else {
 		System.out.println("TRY LIMIT EXCEEDED PLAESE LOGIN AFTER SOMETIME");
-		return;
+		System.exit(0);
 	}
 	
-	i++;
 	
 	
 }
@@ -40,23 +47,34 @@ while(i<6) {
 }
 
 public static void vendor() {
-
-int i = 0;
-
-while(i<6) {
-
-if(VendorUser.logInVendor()) VendorUI.operations();
-
-else if(i<5) System.out.println("INVALID ID OR PASSWORD");
-
-else {
-	System.out.println("TRY LIMIT EXEEDED PLEASE LOGIN AFTER SOMETIME");
-	return;
-}
+	
+	while(vendorCount<4) {
+		
+		if(VendorUser.logInVendor()) {
+			VendorUI.operations();
+			vendorCount=0;
+			break;
+		}
+	  
+		else if(vendorCount<3) {
+			System.out.println("INVALID ID OR PASSWORD");
+			VendorUser.logInVendor();
+			vendorCount+=1;
+			
+		}
+		
+		else {
+			System.out.println("TRY LIMIT EXCEEDED PLAESE LOGIN AFTER SOMETIME");
+			System.exit(0);
+		}
+		
+		
+		
+	}	
+	
 	
 }
 
-}
 
 
 	
@@ -64,8 +82,8 @@ else {
 public static void main(String[] args) {
 
 Scanner sc = new Scanner(System.in);	
-	
-System.out.println(reset+bold+italic+GREEN+"\t\t\t\t  🌳 WELCOME TO FOREST COMMAND 🌳 ");
+ColorConsole.reset();	
+System.out.println("\t\t\t\t  🌳 WELCOME TO FOREST COMMAND 🌳 ");
 System.out.println("\t\t\tTHE BEST PLACE FOR MANAGING TENDERS \n\n");
 
 System.out.println("SELECT A VALID OPTION : \n");
@@ -78,6 +96,7 @@ int choice = sc.nextInt();
 
 switch(choice) {
 
+
 case 1 : 
 	System.out.println("ENTER YOUR ADMIN ID AND PASSWORD TO LOGIN \n\n");
     admin();
@@ -89,7 +108,8 @@ case 2 :
 	return;
 	
 case 0 :
-	System.out.println(reset+italic+blue+"THANKYOU FOR USING OUR SERVICES VIST AGAIN......😁💖");
+	ColorConsole.exitColor();
+	System.out.println("THANKYOU FOR USING OUR SERVICES VIST AGAIN......😁💖");
 	System.exit(0);
 	return;
 

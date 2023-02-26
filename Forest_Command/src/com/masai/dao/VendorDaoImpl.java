@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.masai.colorConsole.ColorConsole;
 import com.masai.dto.Bidder;
 import com.masai.dto.BidderImpl;
 import com.masai.dto.TenderImpl;
@@ -47,9 +48,16 @@ public class VendorDaoImpl  implements VendorDao{
 					String city = set.getString(6);
 					
 					v = new VendorImpl(venid, venpassword, name, email,number, city);
+					ID = v.getId();
+					PASSWORD = v.getPassword();
+					
+					  ColorConsole.welcome();
+						System.out.println("WELCOME "+v.getName()+"  😁");
 					
 				}
-			
+				
+			  
+				
 				if(set==null) throw new VendorException("INVALID ID OR PASSWORD");
 				
 				
@@ -71,20 +79,20 @@ public class VendorDaoImpl  implements VendorDao{
 
 				}
 		 		
-		 		
 			}
 			
 		
 		
-		
+	ColorConsole.reset();	
 	return v;	
+	
 		
 	}
 
 	
 	@Override
-	public void viewAllTender() throws TenderException {
-	
+	public List<TenderImpl> viewAllTender() throws TenderException {
+		List<TenderImpl> list = new ArrayList<>();
 	try {
 		
 		con = DBUtils.getConnection();
@@ -103,10 +111,12 @@ public class VendorDaoImpl  implements VendorDao{
 		String city = set.getString(5);
 		
 		TenderImpl tender = new TenderImpl(id, name, type, price, city);
-		
-		System.out.println(tender);
+		list.add(tender);
 		}
 		
+		if(list.size()==0) {
+			throw new TenderException("NO TENDER FOUND IN THE DATABASE"); 
+		}
 		
 		
 		
@@ -127,7 +137,7 @@ public class VendorDaoImpl  implements VendorDao{
  		
 	}
 		
-		
+		return list;
 		
 	}
 	
@@ -138,7 +148,7 @@ public class VendorDaoImpl  implements VendorDao{
 		try {
 			
 			con = DBUtils.getConnection();
-			String INSERT_QUERY = "INSERT INTO BIDDER(vender_id , tender_id , br_price) VALUES(?,?,?)";
+			String INSERT_QUERY = "INSERT INTO BIDDER(vendor_id , tender_id , br_price) VALUES(?,?,?)";
 			
 			PreparedStatement statement = con.prepareStatement(INSERT_QUERY);
 			
@@ -231,10 +241,10 @@ public class VendorDaoImpl  implements VendorDao{
 	
 	try {
 		con = DBUtils.getConnection();
-		String SELECT_QUERY = "SELECT * FROM BIDDER WHERE br_id = ?";
+		String SELECT_QUERY = "SELECT * FROM BIDDER WHERE vendor_id = ?";
 		
 		PreparedStatement statement = con.prepareStatement(SELECT_QUERY);
-		statement.setString(1, ID);
+		statement.setString(1,ID );
 		
 		ResultSet set = statement.executeQuery();
 		
@@ -246,7 +256,7 @@ public class VendorDaoImpl  implements VendorDao{
 			int price = set.getInt(4);
 			String status = set.getString(5);
 			
-			Bidder b = new BidderImpl(bid_id, ten_id, ven_id, price, status);
+			Bidder b = new BidderImpl(bid_id, ven_id, ten_id, price, status);
 			
 			list.add(b);
 			
@@ -276,4 +286,34 @@ public class VendorDaoImpl  implements VendorDao{
 		return list;
 	}
 
+	
+	public void changePasswordVendor(String newPassword) {
+		
+	try {
+		con = DBUtils.getConnection();
+		String UPDATE_QUERY = "UPDATE VENDOR SET VR_PASSWORD = ? WHERE VR_ID = ?";
+		PreparedStatement statement = con.prepareStatement(UPDATE_QUERY);
+		
+		statement.setString(1, newPassword);
+		statement.setString(2, ID);
+		
+		
+	} catch (Exception e) {
+		
+	 System.out.println("SOMETHING WENT WRONG");	
+		
+	} finally {
+		
+		try {
+			DBUtils.closeConnection(con);
+		} catch (Exception e2) {
+			// TODO: handle exception
+		}
+		
+		
+	}	
+		
+		
+	}
+	
 }
