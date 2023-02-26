@@ -1,5 +1,7 @@
 package com.masai.UI;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import com.masai.dao.VendorDaoImpl;
@@ -9,6 +11,7 @@ public class VendorUI {
 
 	static Scanner sc = new Scanner(System.in);
 	static VendorUser vender = new VendorUser();
+	public static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 	
 	public static int options() {
 	
@@ -28,10 +31,19 @@ public class VendorUI {
 		   
 		   );
        
-     int choice = sc.nextInt();
+     try {
+		
+    	 int choice = Integer.parseInt(br.readLine());
+    	 
+    	 return choice;
+    	 
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+	return 0;
      
      
-     return choice;
+
    
 
 		
@@ -72,27 +84,27 @@ public class VendorUI {
     
     case 1 :
     	vender.viewCurrentTender();
-    	continueOrExit();
+    	VendorUI.continueOrExit();
     	break;
     
     case 2 :
     	vender.placeABidAgainstTender();
-    	continueOrExit();
+    	VendorUI.continueOrExit();
     	break;
     
     case 3 :
     	vender.viewCurrentStatusOfBid();
-    	continueOrExit();
+    	VendorUI.continueOrExit();
     	break;
     
     case 4 :
     	vender.viewOwnBidHistory();
-    	continueOrExit();
+    	VendorUI.continueOrExit();
     	break;
     	
     case 5 :
     	vender.changePasswordOfVendor();
-    	continueOrExit();
+    	VendorUI.continueOrExit();
     	break;
     	
     default :

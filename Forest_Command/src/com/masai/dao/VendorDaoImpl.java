@@ -48,7 +48,7 @@ public class VendorDaoImpl  implements VendorDao{
 					String city = set.getString(6);
 					
 					v = new VendorImpl(venid, venpassword, name, email,number, city);
-					ID = v.getId();
+					ID =id;
 					PASSWORD = v.getPassword();
 					
 					  ColorConsole.welcome();
@@ -58,7 +58,7 @@ public class VendorDaoImpl  implements VendorDao{
 				
 			  
 				
-				if(set==null) throw new VendorException("INVALID ID OR PASSWORD");
+				if(v==null) throw new VendorException("INVALID ID OR PASSWORD");
 				
 				
 				
@@ -143,23 +143,26 @@ public class VendorDaoImpl  implements VendorDao{
 	
 
 	@Override
-	public void placeBidAgainstTender(String tender_id, int price) throws TenderException {
+	public void placeBidAgainstTender(BidderImpl br) throws TenderException {
 	
 		try {
 			
 			con = DBUtils.getConnection();
-			String INSERT_QUERY = "INSERT INTO BIDDER(vendor_id , tender_id , br_price) VALUES(?,?,?)";
+			String INSERT_QUERY = "INSERT INTO BIDDER(br_id,vendor_id , tender_id , br_price) VALUES(?,?,?,?)";
 			
 			PreparedStatement statement = con.prepareStatement(INSERT_QUERY);
 			
-			statement.setString(1,ID);
-			statement.setString(2, tender_id);
-			statement.setInt(3, price);
+			statement.setString(1, br.getId());
+			statement.setString(2,ID);
+			statement.setString(3, br.getTendenId());
+			statement.setInt(4, br.getPrice());
+			statement.setString(5, "Not Selected");
+	
 			
 			int num = statement.executeUpdate();
 			
 			if(num > 0) System.out.println("BIDDED SUCCESSFULLY");
-			else System.out.println("NOT ANY TENDER FOUND WITH THIS "+tender_id);
+			else System.out.println("NOT ANY TENDER FOUND WITH THIS "+br.getTendenId());
 			
 		} catch (Exception e) {
 			
@@ -259,6 +262,7 @@ public class VendorDaoImpl  implements VendorDao{
 			Bidder b = new BidderImpl(bid_id, ven_id, ten_id, price, status);
 			
 			list.add(b);
+			
 			
 		}
 		

@@ -126,23 +126,9 @@ public static void viewAllTender() {
 	ColorConsole.listPreview();
 	list.forEach(e -> System.out.println(e));
 	
-	if(list.size()!=0) {
-	    ColorConsole.reset();
-		System.out.println("\nPRESS 1 FOR SORTING THE LIST FROM LOW TO HIGH PRICE");
-		System.out.println("\nPRESS 2 FOR SORTING THE LIST FROM HIGH TO LOW PRICE");
-		int choice = Integer.parseInt(br.readLine());
-		
-		if(choice==1) {
-			ColorConsole.listPreview();
-			Sorting.highToLowPriceTender(list);
-			list.forEach(e -> System.out.println(e));		
-		}else if (choice==2) {
-			ColorConsole.listPreview();
-			Sorting.highToLowPriceTender(list);
-			list.forEach(e -> System.out.println(e));
-		}
-		
-	}
+	Sorting.chooseTender(list);
+	
+	
 	
 	} catch (Exception e) {
 		
@@ -160,31 +146,16 @@ public static void viewAllBidsOfTender(){
 	List<Bidder> list = new ArrayList<>();
 	
 	try {
-		System.out.println("ENTER TENDER ID HERE : ");
-		String id = br.readLine();
-		list = admindao.viewAllBidsOfTenders(id);
+		System.out.print("ENTER TENDER ID HERE : ");
+		String id1 = br.readLine();
+		list = admindao.viewAllBidsOfTenders(id1);
 		
 		ColorConsole.listPreview();
 		list.forEach(e -> System.out.println(e));
+		Sorting.chooseBidder(list);
 		ColorConsole.reset();
 		
-		if(list.size()!=0) {
-		    ColorConsole.reset();
-			System.out.println("\nPRESS 1 FOR SORTING THE LIST FROM LOW TO HIGH PRICE");
-			System.out.println("\nPRESS 2 FOR SORTING THE LIST FROM HIGH TO LOW PRICE");
-			int choice = Integer.parseInt(br.readLine());
-			
-			if(choice==2) {
-				ColorConsole.listPreview();
-				Sorting.highToLowPriceBidder(list);
-				list.forEach(e -> System.out.println(e));		
-			}else if (choice==1) {
-				ColorConsole.listPreview();
-				Sorting.highToLowPriceBidder(list);
-				list.forEach(e -> System.out.println(e));
-			}
-			
-		}
+	
 		
 		
 	} catch (Exception e) {
@@ -198,9 +169,9 @@ public static void assignTenderToVender(){
 	
 	
 	try {
-		System.out.println("ENTER VENDER ID : ");
+		System.out.print("ENTER VENDER ID : ");
 		String venid = br.readLine();
-		System.out.println("ENTER TENDER ID : ");
+		System.out.print("ENTER TENDER ID : ");
 		String tenid = br.readLine();
 		
 		admindao.assignTenderToVender(venid, tenid);

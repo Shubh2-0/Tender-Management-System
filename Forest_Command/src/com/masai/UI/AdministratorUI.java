@@ -114,6 +114,8 @@ public class AdministratorUI {
     
     case 7 :
     	AdminstratorUser.changePassword();
+    	continurOrExit();
+    	break;
     	
     case 100:
     	System.out.println("THANKS FOR USING OUR APPLICATION VISIT AGAIN");

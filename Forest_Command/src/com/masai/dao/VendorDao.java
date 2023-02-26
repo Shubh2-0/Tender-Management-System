@@ -3,6 +3,7 @@ package com.masai.dao;
 import java.util.List;
 
 import com.masai.dto.Bidder;
+import com.masai.dto.BidderImpl;
 import com.masai.dto.Tender;
 import com.masai.dto.TenderImpl;
 import com.masai.dto.Vendor;
@@ -16,7 +17,7 @@ public interface VendorDao {
 	
 	public List<TenderImpl> viewAllTender() throws TenderException;
 	
-	public void placeBidAgainstTender(String tender_id , int price) throws TenderException;
+	public void placeBidAgainstTender(BidderImpl br) throws TenderException;
 	
 	public Bidder viewStatusOfBid(String BidId) throws BidderException;
 	
