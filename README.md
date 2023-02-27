@@ -31,7 +31,11 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 
 ✨ View All the Tenders
 
+✨ Sort the Tender Table by **Price** (ascending/descending)
+
 ✨ View All the Bids of a tender
+
+✨ Sort the Bidder Table by **Price** (ascending/descending)
 
 ✨ Assign tender to a vendor
 
@@ -43,11 +47,15 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 
 ✨ View all the current Tenders
 
+✨ Sort the Tender Table by **Price** (ascending/descending)
+
 ✨ Place a Bid against a Tender
 
 ✨ View status of a Bid(Whether Selected or Not)
 
 ✨ View his own Bid History
+
+✨ Sort the Bidder History e by **Price** (ascending/descending)
 
 ✨ Change thier Password
 
