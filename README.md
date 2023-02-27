@@ -23,7 +23,7 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 
 ✨ Login with his account
 
-✨ Register new Vendor. (assign a new username and password to him)
+✨ Register new Vendor. (assign a new username and password to him)\
 
 ✨ View all the vendors
 
@@ -31,11 +31,7 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 
 ✨ View All the Tenders
 
-✨ Sort the Tenders According thier price (ascending/descending)
-
 ✨ View All the Bids of a tender
-
-✨ Sort All the Bids of a tender According thier price (ascending/descending)
 
 ✨ Assign tender to a vendor
 
@@ -47,15 +43,11 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 
 ✨ View all the current Tenders
 
-✨ Sort the Tenders According thier price (ascending/descending)
-
 ✨ Place a Bid against a Tender
 
 ✨ View status of a Bid(Whether Selected or Not)
 
 ✨ View his own Bid History
-
-✨ Sort All the Bids According thier price (ascending/descending)
 
 ✨ Change thier Password
 
@@ -95,8 +87,6 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 <br>
 
 
-## Demo 🎥
-<a href="https://drive.google.com/file/d/11nvDq1Tlcw_sZteo1vxi-DjqFnqoGh0R/view?usp=sharing" target="_blank">**Click Here** 🌐🖇️</a> to view Deno Presentation
 
 ## Contributing 💡
 #### Step 1️⃣    -> Clone this repo to your local machine 🖥️.

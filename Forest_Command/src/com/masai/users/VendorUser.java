@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import com.masai.UI.VendorUI;
 import com.masai.colorConsole.ColorConsole;
 import com.masai.dao.VendorDao;
 import com.masai.dao.VendorDaoImpl;
@@ -14,6 +16,7 @@ import com.masai.dto.Tender;
 import com.masai.dto.TenderImpl;
 import com.masai.dto.Vendor;
 import com.masai.dto.VendorImpl;
+import com.masai.exception.BidderException;
 import com.masai.sorting.Sorting;
 
 public class VendorUser {
@@ -62,7 +65,7 @@ public static void viewCurrentTender() {
 		list.forEach(e -> System.out.println(e));
 		
          
-		Sorting.chooseTender(list);
+		Sorting.chooseTenderven(list);
 		
 		
 		
@@ -125,9 +128,15 @@ public static void viewOwnBidHistory() {
 		
 		list = vendordao.viewOwnBidHistory();
 		
+		if(list.size()==0) {
+			
+			throw new BidderException("NO BIDDER FOUND");
+			
+		}
+		
 		ColorConsole.listPreview();
 		list.forEach(e -> System.out.println(e));
-		Sorting.chooseBidder(list);
+		Sorting.chooseBidderven(list);
 	
 		
 		
@@ -154,7 +163,7 @@ public static void changePasswordOfVendor() {
 		
 		if(old.equals(vendor.getPassword())) {
 		
-			System.out.println("ENTER NEW PASSWORD : ");
+			System.out.print("ENTER NEW PASSWORD : ");
 			String newpass = br.readLine();
 			
 			vendordao.changePasswordVendor(newpass);

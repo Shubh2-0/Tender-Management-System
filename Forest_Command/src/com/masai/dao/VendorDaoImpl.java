@@ -1,5 +1,6 @@
 package com.masai.dao;
 
+import java.io.Console;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -148,34 +149,44 @@ public class VendorDaoImpl  implements VendorDao{
 		try {
 			
 			con = DBUtils.getConnection();
-			String INSERT_QUERY = "INSERT INTO BIDDER(br_id,vendor_id , tender_id , br_price) VALUES(?,?,?,?)";
+			String INSERT_QUERY = "INSERT INTO BIDDER(br_id,vendor_id , tender_id , br_price , br_status) VALUES(?,?,?,?,?)";
 			
 			PreparedStatement statement = con.prepareStatement(INSERT_QUERY);
-			
+			String status = "Not Selected";
 			statement.setString(1, br.getId());
 			statement.setString(2,ID);
 			statement.setString(3, br.getTendenId());
 			statement.setInt(4, br.getPrice());
-			statement.setString(5, "Not Selected");
+			statement.setString(5, status);
 	
 			
 			int num = statement.executeUpdate();
 			
-			if(num > 0) System.out.println("BIDDED SUCCESSFULLY");
-			else System.out.println("NOT ANY TENDER FOUND WITH THIS "+br.getTendenId());
+			System.out.println(ColorConsole.blue);
+			if(num > 0) System.out.println("BIDDED SUCCESSFULLY......");
+			else {
+				System.out.println(ColorConsole.RED);
+				System.out.println("NOT ANY TENDER FOUND WITH THIS "+br.getTendenId());
+			}
 			
 		} catch (Exception e) {
 			
-			e.printStackTrace();
+			System.out.println(ColorConsole.RED);
+			System.out.println("SOMETHING WENT WRONG......");
+			
 			
 		} finally {
 			
 			try {
 				DBUtils.closeConnection(con);
 			} catch (Exception e2) {
-				// TODO: handle exception
+				System.out.println(ColorConsole.RED);
+				System.out.println("SOMETHING WENT WRONG......");
+				
 			}
 			
+			
+			ColorConsole.reset();
 			
 		}
 		
@@ -212,7 +223,7 @@ public class VendorDaoImpl  implements VendorDao{
 				
 				
 			}else {
-				
+				System.out.println(ColorConsole.RED);
 				System.out.println("NO BIDDER IS FOUND WITH THIS ID "+BidId);
 				
 			}
@@ -227,12 +238,14 @@ public class VendorDaoImpl  implements VendorDao{
 			try {
 				DBUtils.closeConnection(con);
 			} catch (Exception e2) {
-				// TODO: handle exception
+			
+				System.out.println(ColorConsole.RED);
+				System.out.println("SOMETHING WENT WRONG......");
 			}
 		}
 		
 		
-		
+		ColorConsole.reset();
 		
 		return bid;
 	}
@@ -266,6 +279,7 @@ public class VendorDaoImpl  implements VendorDao{
 			
 		}
 		
+		System.out.println(ColorConsole.RED);
 		if(list.size()==0) System.out.println("NO BIDS FOUND!");
 		
 				
@@ -286,7 +300,7 @@ public class VendorDaoImpl  implements VendorDao{
 	}
 		
 		
-		
+		ColorConsole.reset();
 		return list;
 	}
 
@@ -301,6 +315,14 @@ public class VendorDaoImpl  implements VendorDao{
 		statement.setString(1, newPassword);
 		statement.setString(2, ID);
 		
+		int num = statement.executeUpdate();
+		
+		System.out.println(ColorConsole.blue);
+		if(num > 0 ) System.out.println("PASSWORD CHANGE SUCCESSFULLY...");
+		else {
+		System.out.println(ColorConsole.RED);	
+			 throw new VendorException("SOMETHING WENT WRONG NOT ABLE TO CHANGE THE PASSWORD");
+		}
 		
 	} catch (Exception e) {
 		
@@ -314,9 +336,9 @@ public class VendorDaoImpl  implements VendorDao{
 			// TODO: handle exception
 		}
 		
-		
+
+		ColorConsole.reset();
 	}	
-		
 		
 	}
 	

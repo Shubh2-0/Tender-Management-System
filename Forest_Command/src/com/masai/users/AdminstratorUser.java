@@ -126,7 +126,7 @@ public static void viewAllTender() {
 	ColorConsole.listPreview();
 	list.forEach(e -> System.out.println(e));
 	
-	Sorting.chooseTender(list);
+	Sorting.chooseTenderad(list);
 	
 	
 	
@@ -152,7 +152,7 @@ public static void viewAllBidsOfTender(){
 		
 		ColorConsole.listPreview();
 		list.forEach(e -> System.out.println(e));
-		Sorting.chooseBidder(list);
+		Sorting.chooseBidderad(list);
 		ColorConsole.reset();
 		
 	

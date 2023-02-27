@@ -11,7 +11,7 @@ public class ColorConsole {
     public static final String blue = "\u001b[34m";	
     public static final String underline = "\u001b[4m";
     public static final String yellow = "\u001b[33m";
-	
+    public static final String RED ="\u001B[31m";	
     
     public static void style() {
     	System.out.println(underline+bgBrightWhite+bold+black+"");

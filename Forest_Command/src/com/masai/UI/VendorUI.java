@@ -50,7 +50,7 @@ public class VendorUI {
 	}
 	
 	
-	public static void continueOrExit() {
+	public static void continueOrExitVendor() {
 	
 	System.out.println("\nPRESS 1 FOR MAIN MENU");
 	System.out.println("PRESS 0 FOR EXIT");
@@ -61,17 +61,17 @@ public class VendorUI {
 		System.out.println("THANKS FOR USING OUR SERVICES.......😊");
 		System.exit(0);
 	}else if(choice==1) {
-		VendorUI.options();
+		VendorUI.operationsVendors();
 	}else {
 		System.out.println("INVALID INPUT.....PLEASE SELECT A VALID OPTION");
-		continueOrExit();
+		continueOrExitVendor();
 		
 	}
 		
 		
 	}
 	
-	public static void operations() {
+	public static void operationsVendors() {
 	
 	int choice = options();
 	
@@ -84,27 +84,27 @@ public class VendorUI {
     
     case 1 :
     	vender.viewCurrentTender();
-    	VendorUI.continueOrExit();
+    	VendorUI.continueOrExitVendor();
     	break;
     
     case 2 :
     	vender.placeABidAgainstTender();
-    	VendorUI.continueOrExit();
+    	VendorUI.continueOrExitVendor();
     	break;
     
     case 3 :
     	vender.viewCurrentStatusOfBid();
-    	VendorUI.continueOrExit();
+    	VendorUI.continueOrExitVendor();
     	break;
     
     case 4 :
     	vender.viewOwnBidHistory();
-    	VendorUI.continueOrExit();
+    	VendorUI.continueOrExitVendor();
     	break;
     	
     case 5 :
     	vender.changePasswordOfVendor();
-    	VendorUI.continueOrExit();
+    	VendorUI.continueOrExitVendor();
     	break;
     	
     default :

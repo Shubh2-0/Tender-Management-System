@@ -57,16 +57,17 @@ public class AdministratorDaoImpl implements AdministratorDao {
 			
 		}else {
 			
-			
+			System.out.println(ColorConsole.RED);
 			throw new AdministratorException("\n\nNO ADMIN IS FOUND FOR THIS ID AND PASSWORD\n\n");
 			
 		}
 		
 
 	} catch (SQLException e) {
-		
-		e.printStackTrace();
-		
+	
+		System.out.println(ColorConsole.RED);
+		System.out.println("SOMETHING WENT WRONG.....");
+	
 	}finally {
 		
 		try {
@@ -75,12 +76,16 @@ public class AdministratorDaoImpl implements AdministratorDao {
 			e2.printStackTrace();
 		}
 		
+		
+		ColorConsole.reset();
+		
 	}
 	
 	
 	
 	
 		
+	ColorConsole.reset();
 		
    
 	return admin;
@@ -117,8 +122,9 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		
 	} catch (Exception e) {
 		
-		e.printStackTrace();
-		
+		System.out.println(ColorConsole.RED);
+		System.out.println("VENDOR ALREADY PRESENT IN DATABASE WITH THIS ID" + v.getId());
+		ColorConsole.reset();
 	} finally {
 		
 		try {
@@ -131,6 +137,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 			
 		}
 		
+		ColorConsole.reset();
 		
 	}
 	
@@ -161,7 +168,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		
 		if(set==null) throw new VendorException("NO RECORD FOUND");
 		ColorConsole.listPreview();
-		System.out.println(underline+"\t\tVENDOR ID\t\tPASSOWRD\t\tVENDOR NAmeA\t\t");
+		System.out.println(underline+"\t\tVENDOR ID\t\tPASSOWRD\t\tVENDOR NAME\t\t");
 		
 		while(set.next()) {
 		String id = set.getString(1);
@@ -225,15 +232,21 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		
 		int num = statement.executeUpdate();
 		
-		if(num > 0) System.out.println("TENDER ADDED SUCCESSFULLY IN DATABASE");
+		System.out.println(ColorConsole.blue);
+		if(num > 0) System.out.println("\nTENDER ADDED SUCCESSFULLY IN DATABASE\n");
+		
+		else {
+			System.out.println(ColorConsole.RED);
+			throw new VendorException("TENDER ALREADY PRESENT IN DATABASE WITH THIS ID" + t.getId());
+		}
 		
 		
 		
 	} catch (Exception e) {
-		
-		e.printStackTrace();
-		throw new TenderException("SOMETHING WENT WRONG NOT ABLE TO INSERTV TENDER INTO DATABASE");
-		
+
+		System.out.println(ColorConsole.RED);
+		System.out.println("TENDER ALREADY PRESENT IN DATABASE WITH THIS ID" + t.getId());
+	
 	}finally {
 		
  		try {
@@ -242,10 +255,11 @@ public class AdministratorDaoImpl implements AdministratorDao {
  			
 		} catch (Exception e2) {
             
-			e2.printStackTrace();
+			System.out.println("SOMETHING WENT WRONG");
 
 		}
  		
+ 		ColorConsole.reset();
  		
 	}
 	
@@ -387,10 +401,10 @@ public class AdministratorDaoImpl implements AdministratorDao {
 			statement.setString(2, tenderId);
 			
 			int num = statement.executeUpdate();
-			
+			System.out.println(ColorConsole.blue);
 			if(num > 0) System.out.println("TENDER ASSIGNED SUCCESSFULLY....");
 			
-			
+			System.out.println(ColorConsole.RED);
 			if(num == 0) System.out.println("SOMETHING WENT WRONG NOT ABLE TO ASSIGN");
 			
 		} catch (Exception e) {
@@ -409,6 +423,7 @@ public class AdministratorDaoImpl implements AdministratorDao {
 
 			}
 	 		
+	 		ColorConsole.reset();
 	 		
 		}
 		
@@ -432,9 +447,10 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		statement.setString(2, id);
 		
 		int num = statement.executeUpdate();
-		
-		if(num > 0) System.out.println("PASSWORD CHANGED SUSSECCFULLY.....");
+		System.out.println(ColorConsole.blue);
+		if(num > 0) System.out.println("PASSWORD CHANGED SUCCESSFULLY.....");
 		else {
+		System.out.println(ColorConsole.RED);	
 			throw new AdministratorException("NO ADMIN FOUND WITH THID ID "+id);
 		}
 		
@@ -460,7 +476,8 @@ public class AdministratorDaoImpl implements AdministratorDao {
 		
 	}
 		
-		
+	ColorConsole.reset();	
+	
 	}
 
 	

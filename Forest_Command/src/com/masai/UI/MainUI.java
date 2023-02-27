@@ -1,5 +1,6 @@
 package com.masai.UI;
 
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -52,14 +53,14 @@ public static void vendor() {
 	while(vendorCount<4) {
 		
 		if(VendorUser.logInVendor()) {
-			VendorUI.operations();
+			VendorUI.operationsVendors();
 			vendorCount=0;
 			return;
 		}
 	  
 		else if(vendorCount<3) {
 			System.out.println("INVALID ID OR PASSWORD");
-			VendorUser.logInVendor();
+			vendor();
 			vendorCount+=1;
 			
 		}
@@ -85,7 +86,7 @@ public static void main(String[] args) {
 Scanner sc = new Scanner(System.in);	
 ColorConsole.reset();	
 System.out.println("\t\t\t  🌳 WELCOME TO FOREST COMMAND 🌳 ");
-System.out.println("\t\t\tTHE BEST PLACE FOR MANAGING TENDERS \n\n");
+System.out.println("\t\t\t  BEST PLACE FOR MANAGING TENDERS \n\n");
 
 System.out.println("SELECT A VALID OPTION : \n");
 
