@@ -4,7 +4,7 @@
  
 
 <div align="center">
-  <img alt="Demo" src="Forest_Command/Images/Forest Command.png" />
+  <img alt="Demo" src="Images/Forest Command.png" />
 </div>
 <h2 align="center">🌟Best Place For Managing Tenders🌟</h2>
 
@@ -16,7 +16,7 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 
 
 ## ER Diagram
-<img alt="Demo" src="Forest_Command/Images/ER.jpg" />
+<img alt="Demo" src="Images/ER.jpg" />
 :star: Star me on GitHub — it helps!
 
 ## Admin Features 📋
@@ -65,27 +65,27 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
   
   <tr>
       <td align="center" width="100">
-        <img src="Forest_Command/tools/mysql.png" width="45" height="45" alt="HTML" />
+        <img src="tools/mysql.png" width="45" height="45" alt="HTML" />
       <br>My SQL
     </td>
     
  <td align="center" width="100">
-        <img src="Forest_Command/tools/jdbc.png" width="48" height="48" alt="CSS" />
+        <img src="tools/jdbc.png" width="48" height="48" alt="CSS" />
       <br>JDBC
     </td> 
     
 <td align="center" width="100">
-        <img src="Forest_Command/tools/springboot.png" width="48" height="48" alt="Java" />
+        <img src="tools/springboot.png" width="48" height="48" alt="Java" />
       <br>SpringBoot
     </td>
     
 <td align="center" width="100">
-        <img src="Forest_Command/tools/java.png" width="48" height="48" alt="javascript" />
+        <img src="tools/java.png" width="48" height="48" alt="javascript" />
       <br>Java 
     </td>
     
 <td align="center" width="100">
-        <img src="Forest_Command/tools/github.png" width="48" height="48" alt="Vuejs" />
+        <img src="tools/github.png" width="48" height="48" alt="Vuejs" />
       <br>GitHub
     </td> 
   </tr> 
