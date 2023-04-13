@@ -16,7 +16,7 @@ Whenever a company  requires a service / merchandise , a tender is floated. Comp
 
 
 ## ER Diagram
-<img alt="Demo" src="Images/ER.jpg" />
+<img alt="Demo" src="Images/ER_Diagram.png" />
 :star: Star me on GitHub — it helps!
 
 ## Admin Features 📋
