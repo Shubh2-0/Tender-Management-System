@@ -36,7 +36,7 @@ while(adminCount<5) {
 	}
 	
 	else {
-		System.out.println("TRY LIMIT EXCEEDED PLAESE LOGIN AFTER SOMETIME");
+		System.out.println("TRY LIMIT EXCEEDED PLEASE LOGIN AFTER SOMETIME");
 		System.exit(0);
 	}
 	
@@ -66,7 +66,7 @@ public static void vendor() {
 		}
 		
 		else {
-			System.out.println("TRY LIMIT EXCEEDED PLAESE LOGIN AFTER SOMETIME");
+			System.out.println("TRY LIMIT EXCEEDED PLEASE LOGIN AFTER SOMETIME");
 			System.exit(0);
 		}
 		

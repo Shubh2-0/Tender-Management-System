@@ -14,11 +14,11 @@ public static final String password;
 
    static {
 
-	   ResourceBundle budle = ResourceBundle.getBundle("DB_Details");
+	   ResourceBundle bundle = ResourceBundle.getBundle("DB_Details");
 	   
-	   url = budle.getString("url");
-	   username = budle.getString("username");
-	   password = budle.getString("password");
+	   url = bundle.getString("url");
+	   username = bundle.getString("username");
+	   password = bundle.getString("password");
 	   
    }
    

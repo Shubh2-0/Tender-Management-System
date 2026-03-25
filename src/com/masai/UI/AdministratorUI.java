@@ -45,7 +45,7 @@ public class AdministratorUI {
 	}
 	
 	
-	public static void continurOrExit() {
+	public static void continueOrExit() {
 	
 		System.out.println("\nPRESS 1 FOR MAIN MENU");
 		System.out.println("PRESS 0 FOR EXIT\n\n");
@@ -62,7 +62,7 @@ public class AdministratorUI {
 	    	
 	    }else {
 	    	System.out.println("INVALID INPUT...PLEASE SELECT VALID OPTION");
-	    	continurOrExit();
+	    	continueOrExit();
 	    }
 	    
 		
@@ -84,37 +84,37 @@ public class AdministratorUI {
     
     case 1 :
     	AdminstratorUser.registerVendor();
-    	continurOrExit();
+    	continueOrExit();
     	break;
     
     case 2 :
     	AdminstratorUser.viewAllVenders();
-    	continurOrExit();
+    	continueOrExit();
     	break;
     
     case 3 :
     	AdminstratorUser.createTender();
-    	continurOrExit();
+    	continueOrExit();
     	break;
     
     case 4 :
     	AdminstratorUser.viewAllTender();
-    	continurOrExit();
+    	continueOrExit();
     	break;
     
     case 5 :
     	AdminstratorUser.viewAllBidsOfTender();
-    	continurOrExit();
+    	continueOrExit();
     	break;
     
     case 6 :
     	AdminstratorUser.assignTenderToVender();
-    	continurOrExit();
+    	continueOrExit();
     	break;
     
     case 7 :
     	AdminstratorUser.changePassword();
-    	continurOrExit();
+    	continueOrExit();
     	break;
     	
     case 100:
@@ -123,7 +123,7 @@ public class AdministratorUI {
     	
     default :
         System.out.println("INVALID SELECTION.... PLEASE PROVIDE VALID INPUT");
-        continurOrExit();
+        continueOrExit();
     
     
     
